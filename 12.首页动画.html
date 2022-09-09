@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 清除样式 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 动画 */
+        @keyframes myAn {
+            0%{
+                bottom: 250px;
+                opacity: 0;
+                font-size: 12px;
+            }
+            40%{
+                bottom: 60px;
+                font-size: 26px;
+            }
+            70%{
+                bottom: 140px;
+                
+            }
+            100%{
+                bottom: 124px;
+                font-size: 48px;
+            }
+        }
+        /* 样式 */
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            display: flex;
+            flex-direction:column;
+        }
+        header{
+            height: 44px;
+            width: 100%;
+            line-height:44px;
+            text-align: center;
+            font-size: 18px;
+        }
+        main{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            background: url(./bz.webp) no-repeat;
+            background-size: 100% 100%;
+        }
+        main div{
+            display: flex;
+            justify-content: space-between;
+            border-radius:20px ;
+            width: 105px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #fff;
+            box-sizing: border-box;
+            padding: 0 16px;
+            position: absolute;
+           top: 28px;
+           right: 14px;
+        }
+        main div a{
+            text-decoration: none;color: #000;
+        }
+        main p{
+            color: #fff;
+            font-size: 48px;
+            width: 238px;
+            height: 64px;
+            text-align: center;
+            line-height: 64px;
+            position:absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 124px;
+            animation: myAn 1.5s linear forwards;
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>源码健身</header>
+    <main>
+        <div>
+            <span id="countDown">5s</span>
+            |
+            <a href="#">跳过</a>
+        </div>
+        <p>HOLD ON</p>
+    </main>
+
+    <script>
+        //获取
+        const countDown = document.querySelector('#countDown')
+        let i=5;
+        let time;
+        countDown.innerHTML = `${i}s`
+        time = setInterval(function(){
+            i--
+            countDown.innerHTML = `${i}s`
+            console.log(i);
+            if(i===0){
+                clearInterval(time)
+            }
+        },1000)
+
+    </script>
+</body>
+</html>
